@@ -8,10 +8,10 @@ input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer;}b
 body {
 	font-family: sans-serif;
 	font-size: 1.2rem;
-	background-color: black;
-	background-image: url(../images/paint.png);
-	color: white;
-	background-size: cover;
+	background-color: white;
+	// background-image: url(../images/paint.png);
+	color: #222;
+	// background-size: cover;
 	background-repeat: no-repeat;
 	
 	height: 100vh;
@@ -29,8 +29,7 @@ h2 {
 
 img {
 	max-width: 100%;
-	border: 10px solid goldenrod;
-	border-radius: 50%;
+	display: block;
 } 
 
 .wrapper {
@@ -50,4 +49,39 @@ img {
 .painter__image {
 	
 
+}
+
+.selectedPainter {
+	display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: flex-start;
+  align-content: flex-start;
+  height: 100vh;
+	p {
+		display: none;
+	}
+}
+
+.painting {
+  // flex: 1 1 auto;
+  width: 10%;
+  border-radius: 10px;
+  position: relative;
+  img {
+  	position: relative;
+  	transform: scale(1);
+  	transition: transform .8s ease;
+  	
+
+  	&:hover {
+  		transform: scale(3);
+  		z-index: 10;
+  			border: 1px solid white;
+
+
+  	}
+  }
+ 
 }

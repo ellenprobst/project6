@@ -30,6 +30,13 @@ class App extends React.Component {
 			paintings : []
 		}
 		this.handleSubmit = this.handleSubmit.bind(this);
+		this.handleChange = this.handleChange.bind(this);
+	}
+
+	handleChange(e) {
+		this.setState({
+			["painter"]: e.target.value
+		});
 	}
 
 	handleSubmit(e) {
@@ -42,7 +49,8 @@ class App extends React.Component {
 	            format: "json",
 	            imgonly: true,
 	            type: "painting",
-	            q: "pieter paul rubens"
+	            ps: 20,
+	            q: this.state.painter
 			}
 		}).then((data) => {
 			// console.log(data.artObjects)
@@ -51,6 +59,7 @@ class App extends React.Component {
 			})
 			console.log(this.state)
 		})
+
 	}
 
 	render() {
@@ -58,9 +67,8 @@ class App extends React.Component {
 		return (
 			<div className="wrapper">
 				<h1>Color palettes</h1>
-				<PainterMenu paintersList={paintersList} submitForm={this.handleSubmit}/>
+				<PainterMenu paintersList={paintersList} submitForm={this.handleSubmit} handleChange={this.handleChange}/>
 				<SelectedPainter art={this.state.paintings}/>
-				
 			</div>
 		)
 	}
