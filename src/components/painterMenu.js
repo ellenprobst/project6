@@ -1,15 +1,17 @@
 import React from 'react';
 
-export default ({ paintersInfo }) => {
+export default (props) => {
+	console.log(props)	
 	return (
-		<div className='painterMenu'>
-			{paintersInfo.map((painter, i) => {return(
+		<form className='painterMenu' onSubmit={props.submitForm}>
+			{props.paintersList.map((painter, i) => {return(
 					<div key={`painter-${i}`} className="painter">
-						<h2>{painter.name}</h2>
-						<img src={painter.image}/>
+						<input type="radio" name="painter" id={painter.name}/>
+						<label htmlFor={painter.name}>{painter.name}</label>
 					</div>	
 				)
 			})}
-		</div>
+			<input type="submit" value="Submit form"/>
+		</form>
 	)
 }

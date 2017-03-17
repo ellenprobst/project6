@@ -19,3 +19,13 @@ class App extends React.Component {
 		
 	}
 }
+
+{this.state.showForm === true ?
+        return (
+            <form onSubmit={this.getMoviesByGenre}>
+                <input name="movieGenre" type="text" />
+            </form>
+        )
+    :
+        null
+    }
