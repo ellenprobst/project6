@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default (props) => {
-	console.log(props)	
+	// console.log(props)	
 	return (
 		<form className='painterMenu' onSubmit={props.submitForm}>
 			{props.paintersList.map((painter, i) => {

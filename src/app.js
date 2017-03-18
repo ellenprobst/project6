@@ -27,10 +27,12 @@ class App extends React.Component {
 	constructor() {
 		super();
 		this.state= {
-			paintings : []
+			paintings : [],
+			selectedPainting: []
 		}
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.handleChange = this.handleChange.bind(this);
+		this.handleClick = this.handleClick.bind(this);
 	}
 
 	handleChange(e) {
@@ -41,7 +43,7 @@ class App extends React.Component {
 
 	handleSubmit(e) {
 		e.preventDefault();
-		console.log("submitted");
+		// console.log("submitted");
 		ajax({
 			url: "https://www.rijksmuseum.nl/api/en/collection/",
 			data: {
@@ -53,12 +55,42 @@ class App extends React.Component {
 	            q: this.state.painter
 			}
 		}).then((data) => {
-			// console.log(data.artObjects)
-			this.setState({
-				paintings: data.artObjects
-			})
-			console.log(this.state)
+			let paintings = data.artObjects
+			// console.log(paintings)
+			
+			paintings.forEach((painting) => {
+				let object = painting.objectNumber
+				ajax({
+					url: `https://www.rijksmuseum.nl/api/en/collection/${object}`,
+					data: {
+			            key: apiKey,
+			            format: "json",
+			            imgonly: true,
+			            type: "painting",
+			            ps: 20,
+			            q: this.state.painter
+			           }
+				}).then((paintingData) => {
+					let artObject = paintingData.artObject
+					if (artObject.normalizedColors.length != 0 ) {
+						console.log(artObject)
+						let selectedPaintings = this.state.paintings
+
+						selectedPaintings.push(artObject)
+						// console.log(selectedPaintings)
+
+						this.setState({
+							paintings: selectedPaintings
+						})
+					}
+				})
+			}) 	
 		})
+
+// do first ajax call, .then run for loop with inside the second ajax call and set.state
+	}
+
+	handleClick(){
 
 	}
 
@@ -68,7 +100,7 @@ class App extends React.Component {
 			<div className="wrapper">
 				<h1>Color palettes</h1>
 				<PainterMenu paintersList={paintersList} submitForm={this.handleSubmit} handleChange={this.handleChange}/>
-				<SelectedPainter art={this.state.paintings}/>
+				<SelectedPainter art={this.state.paintings} handleClick={this.handleClick} selection={this.state.selectedPainting}/>
 			</div>
 		)
 	}

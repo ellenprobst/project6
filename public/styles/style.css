@@ -163,18 +163,7 @@ img {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-direction: column;
-      flex-direction: column;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -ms-flex-pack: end;
-      justify-content: flex-end;
-  -ms-flex-align: start;
-      align-items: flex-start;
-  -ms-flex-line-pack: start;
-      align-content: flex-start;
-  height: 100vh; }
-  .selectedPainter p {
-    display: none; }
+      flex-direction: column; }
 
 .painting {
   width: 10%;
@@ -188,3 +177,19 @@ img {
       transform: scale(3);
       z-index: 10;
       border: 1px solid white; }
+
+.paintingDetails {
+  display: -ms-flexbox;
+  display: flex; }
+
+.groupColor {
+  display: -ms-flexbox;
+  display: flex; }
+
+.colors {
+  width: 50px;
+  height: 50px;
+  border-radius: 5px; }
+
+.paintingImage {
+  width: 30%; }

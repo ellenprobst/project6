@@ -1,20 +1,35 @@
 import React from 'react';
 
 export default (props) =>{
-	console.log(props)
 	return (
 		<div className="selectedPainter">
-			{props.art.map((painting, i)=> {
+			{props.art.map((painting, i) => {
+				this.setState({
+						selectedPainting: painting.normalizedColors
+					})
 				return (
-					<div key={`painting-${i}`} className="painting">
-						<p >{painting.title}</p>
-						<img src={painting.webImage.url} alt=""/>
+					
+					<div className="paintingDetails" key={props.state.selectedPainting}>
+						<div className="groupColor">
+							{painting.normalizedColors.map((color, i)=> {
+								let divStyle = {
+									backgroundColor: color
+								}
+								return (
+									<div style={divStyle} key={`color-${i}`} className="colors">
+										<p>{color}</p>
+									</div>
+								)
+							})}
+						</div>
+						<button handleClick={props.handleClick}>View more</button>
 					</div>
-					
-					
-					)
-				})
-		} 
-	</div>
+				)
+			})} 
+			<div className="paintingImage" >
+				<img src="" alt=""/>Image
+			</div>	
+				
+		</div>
 	)
 }
