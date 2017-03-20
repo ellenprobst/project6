@@ -1,8 +1,11 @@
 import React from 'react';
+import paintersList from './data.js';
 import SelectedPainter from './selectedPainter.js';
 import { ajax } from 'jquery';
 
 const apiKey = "l4po77m1"
+
+	
 
 export default class PainterMenu extends React.Component {
 	constructor() {
@@ -72,7 +75,7 @@ export default class PainterMenu extends React.Component {
 				<div className="mainContent">
 					<h2>Select a painter</h2>
 					<form className='painterMenu'  >
-						{this.props.paintersList.map((painter, i) => {
+						{paintersList.map((painter, i) => {
 							return(
 								<div key={`painter-${i}`} className="painter">
 									<input type="radio" name="painter" id={painter.name} value={painter.name}  onClick={this.handleSubmit}/>

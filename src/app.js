@@ -1,73 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PainterMenu from './components/painterMenu.js';
+import { Router, Route, browserHistory, Link } from 'react-router';
 
 import Slider from 'react-slick';
 
 
-const paintersList = [
-	{
-		name: "Frans Hals",
-		image: "src/images/Hals.jpg"
-	},
-	{
-		name: "Rembrandt van Rijn",
-		image: "src/images/Rembrandt.jpg"
-	},
-	{
-		name: "Johannes Vermeer",
-		image: "src/images/Rembrandt.jpg"
-	},
-	{
-		name: "Caesar Boëtius van Everdingen",
-		image: "src/images/Rembrandt.jpg"
-	},
-	{
-		name: "Jan Havicksz. Steen",
-		image: "src/images/Rembrandt.jpg"
-	},
-	{
-		name: "George Hendrik Breitner",
-		image: "src/images/Rembrandt.jpg"
-	},
-	{
-		name: "Jan van Scorel",
-		image: "src/images/Rembrandt.jpg"
-	},
-	{
-		name: "Jan Willem Pieneman",
-		image: "src/images/Rembrandt.jpg"
-	},
-	{
-		name: "Hendrick Avercamp",
-		image: "src/images/Rembrandt.jpg"
-	},
-	{
-		name: "Jan Asselijn",
-		image: "src/images/Rembrandt.jpg"
-	},
-	{	
-		name: "Pieter Paul Rubens",
-		image: "src/images/Rubens.jpg"
-	}
-]
 
 
 class App extends React.Component {
 	constructor() {
 		super();
-		this.state= {
-			view : "home"
-		}
-	
-		this.changePage = this.changePage.bind(this);
-		
-	}
-
-	changePage() {
-		this.setState({
-			view : "paintersList"
-		})
 	}
 	
 	render() {
@@ -82,16 +25,12 @@ class App extends React.Component {
 	    };
 
 		return (
-			this.state.view === "home" ?
 			<div className="wrapper">
 				<header>
 					<h1>Colors <span className="lower">from</span><span> the low countries</span></h1>
-					<button onClick={this.changePage}>Start</button>
+					<button><Link to="/painters">Start</Link></button>
 				</header>
-			</div> : 
-			<div className="wrapper__menu">	
-				<PainterMenu paintersList={paintersList}  />
-			</div>	
+			</div>  
 		)
 		
 	}
@@ -99,4 +38,9 @@ class App extends React.Component {
 
 
 
-ReactDOM.render(<App />, document.getElementById('app'));
+ReactDOM.render(
+	<Router history={browserHistory}>
+		<Route path="/" component={App}/>
+		<Route path="/painters" component={PainterMenu}/>
+		<Route path="/colors" component={App}/>
+	</Router>, document.getElementById('app'));
