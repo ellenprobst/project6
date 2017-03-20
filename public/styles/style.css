@@ -258,13 +258,20 @@ label {
   display: flex; }
 
 .allColors {
-  width: 65%; }
+  width: 100%; }
 
-.paintingDetails img {
-  max-width: 100%;
-  height: 300px;
-  display: block;
-  margin: 0 auto; }
+.paintingDetails {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+      flex-direction: column;
+  -ms-flex-pack: center;
+      justify-content: center; }
+  .paintingDetails img {
+    max-width: 100%;
+    height: 300px;
+    display: block;
+    margin: 0 auto; }
 
 .groupColor {
   display: -ms-flexbox;
@@ -283,3 +290,30 @@ li {
   margin: 30px; }
   li button {
     display: none; }
+
+.slider-decorator-2 {
+  display: none; }
+
+.slider-decorator-0 button, .slider-decorator-1 button {
+  visibility: hidden;
+  opacity: 1;
+  position: relative; }
+  .slider-decorator-0 button::after, .slider-decorator-1 button::after {
+    font-family: FontAwesome;
+    position: absolute;
+    padding: 5px;
+    visibility: visible !important;
+    width: 2rem;
+    height: 2rem;
+    font-size: 2rem;
+    border-radius: 100px;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    bottom: 0; }
+
+.slider-decorator-0 button::after {
+  content: '\f104';
+  display: inherit; }
+
+.slider-decorator-1 button::after {
+  content: '\f105'; }
