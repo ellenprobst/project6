@@ -1,5 +1,7 @@
 import React from 'react';
 var Slider = require('react-slick');
+var Carousel = require('nuka-carousel');
+
 
 export default class SelectedPainter extends React.Component {
 	constructor() {
@@ -7,12 +9,10 @@ export default class SelectedPainter extends React.Component {
 		
 	}
 	render() {
-		var settings = {
-    	dots: true
-    }
+		mixins: [Carousel.ControllerMixin];
 		return (
 				<div className="allColors">
-					<Slider {...settings}>
+					<Carousel>
 					{this.props.art.map((painting, i) => {
 					// console.log(painting)
 						return (
@@ -34,7 +34,7 @@ export default class SelectedPainter extends React.Component {
 						)
 					})
 					}
-					</Slider>
+					</Carousel>
 				</div>
 		)
 	}

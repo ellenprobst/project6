@@ -9,23 +9,18 @@ export default class PainterMenu extends React.Component {
 		super();
 		this.state= {
 			paintings: [],
-			view : ""
+			view : "",
 		}
-		this.handleChange = this.handleChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
 		
 	}
-	handleChange(e) {
-		console.log("changed")
-		console.log(this)
-		console.log(this.state)
-		this.setState({
-			["painter"]: e.target.value
-		});
-		console.log(this)
-		console.log(this.state)
+	// handleChange(e) {
+	// 	console.log("changed")
+	// 	this.setState({
+	// 		["painter"]: e.target.value
+	// 	});
 		
-	}
+	// }
 	handleSubmit(e) {
 		e.preventDefault();
 
@@ -37,7 +32,7 @@ export default class PainterMenu extends React.Component {
 	            imgonly: true,
 	            type: "painting",
 	            ps: 20,
-	            q: this.state.painter
+	            q: e.target.value
 			}
 		}).then((data) => {
 			let paintings = data.artObjects
@@ -80,7 +75,7 @@ export default class PainterMenu extends React.Component {
 						{this.props.paintersList.map((painter, i) => {
 							return(
 								<div key={`painter-${i}`} className="painter">
-									<input type="radio" name="painter" id={painter.name} value={painter.name} onChange={this.handleChange} onClick={this.handleSubmit}/>
+									<input type="radio" name="painter" id={painter.name} value={painter.name}  onClick={this.handleSubmit}/>
 									<label htmlFor={painter.name}>{painter.name}</label>
 								</div>	
 							)
@@ -89,8 +84,7 @@ export default class PainterMenu extends React.Component {
 					<div className="mainContent">
 					<SelectedPainter art={this.state.paintings} />
 					</div>
-				</div>
-				
+				</div>	
 		)
 	}
 }

@@ -83,7 +83,6 @@ class App extends React.Component {
 
 		return (
 			this.state.view === "home" ?
-
 			<div className="wrapper">
 				<header>
 					<h1>Colors <span className="lower">from</span><span> the low countries</span></h1>
