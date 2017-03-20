@@ -1,70 +1,24 @@
 import React from 'react';
 import paintersList from './data.js';
+import Navigation from './navigation';
 import SelectedPainter from './selectedPainter.js';
-import { ajax } from 'jquery';
-
-const apiKey = "l4po77m1"
-
-	
+import { Router, Route, browserHistory, Link } from 'react-router';
 
 export default class PainterMenu extends React.Component {
 	constructor() {
 		super();
 		this.state= {
 			paintings: [],
-			view : "",
+			view : ""
 		}
 		this.handleSubmit = this.handleSubmit.bind(this);
 		
 	}
-	// handleChange(e) {
-	// 	console.log("changed")
-	// 	this.setState({
-	// 		["painter"]: e.target.value
-	// 	});
-		
-	// }
+
 	handleSubmit(e) {
 		e.preventDefault();
-
-		ajax({
-			url: "https://www.rijksmuseum.nl/api/en/collection/",
-			data: {
-	            key: apiKey,
-	            format: "json",
-	            imgonly: true,
-	            type: "painting",
-	            ps: 20,
-	            q: e.target.value
-			}
-		}).then((data) => {
-			let paintings = data.artObjects
-			paintings.forEach((painting) => {
-				let object = painting.objectNumber
-				ajax({
-					url: `https://www.rijksmuseum.nl/api/en/collection/${object}`,
-					data: {
-			            key: apiKey,
-			            format: "json",
-			            imgonly: true,
-			            type: "painting",
-			            ps: 20,
-			            q: this.state.painter
-			           }
-				}).then((paintingData) => {
-					let artObject = paintingData.artObject
-					if (artObject.normalizedColors.length != 0 ) {
-						let selectedPaintings = this.state.paintings
-
-						selectedPaintings.push(artObject)
-
-						this.setState({
-							paintings: selectedPaintings
-						})
-					}
-				})
-			}) 	
-		})
+		browserHistory.push(`/painter/${e.target.value}`);
+		
 		this.setState({
 			view : "colors"
 		})
@@ -72,7 +26,12 @@ export default class PainterMenu extends React.Component {
 	}
 	render() {
 		return (
+			<div className="wrapper">
+				<div className="heading">
+					<Navigation />
+				</div>
 				<div className="mainContent">
+					
 					<h2>Select a painter</h2>
 					<form className='painterMenu'  >
 						{paintersList.map((painter, i) => {
@@ -85,9 +44,10 @@ export default class PainterMenu extends React.Component {
 						})}
 					</form> 
 					<div className="mainContent">
-					<SelectedPainter art={this.state.paintings} />
+					
 					</div>
-				</div>	
+				</div>
+			</div>	
 		)
 	}
 }

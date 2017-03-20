@@ -21,7 +21,6 @@ body {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	height: 100vh;
 	max-width: 1300px;
 
 }
@@ -35,20 +34,32 @@ header {
 	text-transform: uppercase;	
 }
 
+.heading {
+	width: 100%;
+	text-align: right;
+}
+
 nav {
-	background-color: white;
-	padding: 0 20px 20px;
-	ul {
-		padding: 20px;
-		margin: 0;
-		display: flex;
-		justify-content: space-between;
-		li {
-			color: rgb(6, 17, 56);
-			font-weight: bold;
-			list-style: none;
+	
+	padding-top: 10px;
+	text-transform: uppercase;
+	a {
+		padding: 10px 20px;
+		color: rgb(17, 0, 25);
+		position: relative;
+		font-size: .8rem;
+		font-weight: bold;
+		&:after {
+			content: "";
+			left: 20px;
+			display: block;
+			position: absolute;
+			width: 40px;
+			background-color: rgb(17, 0, 25);
+			height: 2px; 
 		}
 	}
+	align-self: flex-end;
 }
 
 h1 {
@@ -68,15 +79,19 @@ h1 {
 }
 
 h2 {
-	margin: 0;
+	display: inline-block;
+	margin: 0 0 20px;
 	font-size: 3rem;
 	padding: 20px;
 	text-align: center;
 	line-height: 1;
-	color: #FFF;
-	background-color:rgba(6, 17, 56, 0.81);
-	border-top-right-radius: 20px;
-	border-top-left-radius: 20px;
+	color: #ffe9fd;
+	background-color:rgba(17, 0, 25, 0.81);
+	border-radius: 20px;
+}
+
+a {
+	text-decoration: none;
 }
 
 img {
@@ -86,23 +101,32 @@ img {
 
 button {
 	text-transform: uppercase;
-	font-weight: bold;
 	width: 200px;
 	display: block;
 	margin: 0 auto;
-	color: #F4CCEE;
-	padding: 10px 15px;
 	border: 2px solid rgb(6, 17, 56);
 	background-color: rgba(6, 17, 56, 0.81);
 	transition: all 1s ease;
+	a {
+		color:  #F4CCEE;
+		padding: 10px 15px;
+	}
 	&:hover {
 		background-color: transparent;
-		color: rgb(6, 17, 56);
 		border: 2px solid rgb(6, 17, 56);
+	}
+	&:hover a {
+		color: rgb(6, 17, 56);
 	}
 }
 
+.mainContent {
+	width: 80%;
+	margin: 0 auto;
+	padding: 0 20px;
+	text-align: center;
 
+}
 .wrapper__menu {
 	width: 80%;
 	height: calc(100vh - 60px);
@@ -118,7 +142,11 @@ button {
 	flex-wrap: wrap;
 	text-transform: uppercase;
 	height: 80vh;
-	padding: 20px
+	padding: 20px;
+	max-width: 100%;
+    background: rgba(199, 179, 214, 0.68);
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgb(0,0,0);
 }
 
 .painter {
@@ -134,9 +162,11 @@ label {
 	font-weight: bold;
 	transition: all .4s ease;
 	letter-spacing: 1.5px;
-	padding: 10px 5px;
+	padding: 10px;
+	color: rgb(6, 17, 56);
+	border-radius: 5px;
 	&:hover{
-		color: #FFF;
+		color: #ffe9fd;
 		background-color:rgba(6, 17, 56, 0.81);
 		cursor: pointer;
 	} 
@@ -154,7 +184,11 @@ label {
 }
 
 .allColors {
-	width: 100%;
+	width: 80%;
+	margin: 0 auto;
+	background-color: rgb(17, 0, 25);
+	border-radius: 20px;
+	padding: 30px 20px;
 }
 
 .paintingDetails {
@@ -167,17 +201,25 @@ label {
 		display: block;
 		margin: 0 auto;
 	}
+	p {
+		text-align: center;
+	}
 }
 
 .groupColor {
 	display: flex;
 	margin: 10px;
 	justify-content: center;
+	border: 2px solid white;
+	border-radius: 5px;
+	align-self: center;
 }
 
 .colors {
+	display: inline-block;
 	padding: 20px 15px;
 	p {
+		color: #ffe9fd;
 		font-size: 1rem;
 		text-align: center;
 	}
@@ -226,4 +268,14 @@ li {
 	 &::after {
 	 	content: '\f105';
 	 }
+}
+
+button.saveSelection {
+	display: inline-block;
+	color: #ffe9fd;
+}
+
+footer p {
+	font-size: .8rem;
+	text-align: center;
 }
