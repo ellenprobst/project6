@@ -1,11 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { ajax } from 'jquery';
-import { Router, Route, browserHistory, Link } from 'react-router';
 import PainterMenu from './components/painterMenu.js';
-import SelectedPainter from './components/selectedPainter.js';
 
-const apiKey = "l4po77m1"
+import Slider from 'react-slick';
+
+
 const paintersList = [
 	{
 		name: "Frans Hals",
@@ -13,6 +12,38 @@ const paintersList = [
 	},
 	{
 		name: "Rembrandt van Rijn",
+		image: "src/images/Rembrandt.jpg"
+	},
+	{
+		name: "Johannes Vermeer",
+		image: "src/images/Rembrandt.jpg"
+	},
+	{
+		name: "Caesar Boëtius van Everdingen",
+		image: "src/images/Rembrandt.jpg"
+	},
+	{
+		name: "Jan Havicksz. Steen",
+		image: "src/images/Rembrandt.jpg"
+	},
+	{
+		name: "George Hendrik Breitner",
+		image: "src/images/Rembrandt.jpg"
+	},
+	{
+		name: "Jan van Scorel",
+		image: "src/images/Rembrandt.jpg"
+	},
+	{
+		name: "Jan Willem Pieneman",
+		image: "src/images/Rembrandt.jpg"
+	},
+	{
+		name: "Hendrick Avercamp",
+		image: "src/images/Rembrandt.jpg"
+	},
+	{
+		name: "Jan Asselijn",
 		image: "src/images/Rembrandt.jpg"
 	},
 	{	
@@ -23,87 +54,50 @@ const paintersList = [
 
 
 class App extends React.Component {
-
 	constructor() {
 		super();
 		this.state= {
-			paintings : [],
-			selectedPainting: []
+			view : "home"
 		}
-		this.handleSubmit = this.handleSubmit.bind(this);
-		this.handleChange = this.handleChange.bind(this);
-		this.handleClick = this.handleClick.bind(this);
+	
+		this.changePage = this.changePage.bind(this);
+		
 	}
 
-	handleChange(e) {
+	changePage() {
 		this.setState({
-			["painter"]: e.target.value
-		});
-	}
-
-	handleSubmit(e) {
-		e.preventDefault();
-		// console.log("submitted");
-		ajax({
-			url: "https://www.rijksmuseum.nl/api/en/collection/",
-			data: {
-	            key: apiKey,
-	            format: "json",
-	            imgonly: true,
-	            type: "painting",
-	            ps: 20,
-	            q: this.state.painter
-			}
-		}).then((data) => {
-			let paintings = data.artObjects
-			// console.log(paintings)
-			
-			paintings.forEach((painting) => {
-				let object = painting.objectNumber
-				ajax({
-					url: `https://www.rijksmuseum.nl/api/en/collection/${object}`,
-					data: {
-			            key: apiKey,
-			            format: "json",
-			            imgonly: true,
-			            type: "painting",
-			            ps: 20,
-			            q: this.state.painter
-			           }
-				}).then((paintingData) => {
-					let artObject = paintingData.artObject
-					if (artObject.normalizedColors.length != 0 ) {
-						console.log(artObject)
-						let selectedPaintings = this.state.paintings
-
-						selectedPaintings.push(artObject)
-						// console.log(selectedPaintings)
-
-						this.setState({
-							paintings: selectedPaintings
-						})
-					}
-				})
-			}) 	
+			view : "paintersList"
 		})
-
-// do first ajax call, .then run for loop with inside the second ajax call and set.state
 	}
-
-	handleClick(){
-
-	}
-
+	
 	render() {
+		const settings = {
+	      dots: true,
+	      infinite: true,
+	      speed: 500,
+	      slidesToShow: 1,
+	      slidesToScroll: 1,
+	      fade: true,
+	      adaptiveHeight: true
+	    };
 
 		return (
+			this.state.view === "home" ?
+
 			<div className="wrapper">
-				<h1>Color palettes</h1>
-				<PainterMenu paintersList={paintersList} submitForm={this.handleSubmit} handleChange={this.handleChange}/>
-				<SelectedPainter art={this.state.paintings} handleClick={this.handleClick} selection={this.state.selectedPainting}/>
-			</div>
+				<header>
+					<h1>Colors <span className="lower">from</span><span> the low countries</span></h1>
+					<button onClick={this.changePage}>Start</button>
+				</header>
+			</div> : 
+			<div className="wrapper__menu">	
+				<PainterMenu paintersList={paintersList}  />
+			</div>	
 		)
+		
 	}
 }
+
+
 
 ReactDOM.render(<App />, document.getElementById('app'));
