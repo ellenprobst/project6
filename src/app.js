@@ -4,6 +4,7 @@ import PainterMenu from './components/painterMenu.js';
 import SelectedPainter from './components/selectedPainter.js';
 import { Router, Route, browserHistory, Link } from 'react-router';
 import UserLogin from './components/userLogin.js';
+import MySelection from './components/mySelection.js'; 
 
 var config = {
     apiKey: "AIzaSyD2YfDIWZPq0g7SiX8FDKPulMf_Z6GO_7c",
@@ -44,4 +45,5 @@ ReactDOM.render(
 		<Route path="/" component={App}/>
 		<Route path="/painters" component={PainterMenu}/>
 		<Route path="/painter/:painter_name" component={SelectedPainter}/>
+		<Route path="/mySelection" component={MySelection} />
 	</Router>, document.getElementById('app'));

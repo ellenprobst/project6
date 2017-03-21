@@ -10,6 +10,7 @@ export default class UserLogin extends React.Component {
 		this.formToShow = this.formToShow.bind(this);
 		this.handleChange = this.handleChange.bind(this);
 		this.signUp = this.signUp.bind(this);
+		this.login = this.login.bind(this);
 	}
 
 	formToShow(e) {
@@ -35,7 +36,7 @@ export default class UserLogin extends React.Component {
 				})
 		}
 	}
-	
+
 	login(e) {
 		e.preventDefault();
 		firebase.auth()

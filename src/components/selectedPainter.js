@@ -14,8 +14,25 @@ export default class SelectedPainter extends React.Component {
 			paintings: [],
 			view : ""
 		}
+
+		this.handleClick = this.handleClick.bind(this);
 		
 	}
+
+	handleClick(painting) {
+		const dbRef = firebase.database().ref();
+		
+		console.log(painting);
+		const selectedPainting = {
+			name: painting.principalMaker,
+			title: painting.title,
+			image: painting.webImage.url,
+			colors: painting.normalizedColors
+		};
+		console.log(selectedPainting)
+		dbRef.push(selectedPainting);	
+	}
+	
 
 	componentDidMount() {
 		ajax({
@@ -44,7 +61,7 @@ export default class SelectedPainter extends React.Component {
 			           }
 				}).then((paintingData) => {
 					let artObject = paintingData.artObject
-					if (artObject.normalizedColors.length != 0 ) {
+					if ((artObject.normalizedColors.length != 0 ) && (artObject.principalMaker === this.props.params.painter_name)) {
 						let selectedPaintings = this.state.paintings
 
 						selectedPaintings.push(artObject)
@@ -84,13 +101,14 @@ export default class SelectedPainter extends React.Component {
 										)
 									})}
 								</div>
-								<button className="saveSelection">Save my selection</button>
+								<button className="saveSelection" onClick={() => this.handleClick(painting)}>Save my selection</button>
 							</div>
 						)
 					})
 					}
 					</Carousel>
 				</div>
+
 			</div>
 		)
 	}

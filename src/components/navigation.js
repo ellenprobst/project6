@@ -6,6 +6,7 @@ export default function Navigation() {
 		<nav>
 			<Link to='/'>Home</Link>
 			<Link to='/painters'>List of Painters</Link>
+			<Link to='/mySelection'>My Selection</Link>
 		</nav>
 	)
 }
