@@ -16,8 +16,7 @@ export default class MySelection extends React.Component {
 				}
 			]
 		}
-		this.removeItem = this.removeItem.bind(this);
-		
+		this.removeItem = this.removeItem.bind(this);	
 	}
 
 	componentDidMount() {
@@ -36,17 +35,14 @@ export default class MySelection extends React.Component {
 					const dataBaseData = data.val();
 					const itemArray = [];
 					for(let itemKey in dataBaseData) {
-						console.log(itemKey);
-						console.log(dataBaseData[itemKey]);
 						const savedItem = dataBaseData[itemKey] 
 						 itemArray.push(savedItem);
-						 savedItem.key = itemKey;
-
-						console.log(itemArray);
-						this.setState({
-						 	savedItems: itemArray
-						 })
+						 savedItem.key = itemKey;	
 					}
+					this.setState({
+						 	savedItems: itemArray
+					 })
+					console.log(itemArray);
 				})
 			}
 		});	
@@ -60,13 +56,11 @@ export default class MySelection extends React.Component {
 	}
 
 	render() {
-
-
 		return (
 			<div>
 				<UserLogin />
+				
 				{this.state.savedItems.map((item, i) => {
-					console.log(item)
 					return(
 						<div key={`savedItem-${i}`} className="savedItem">
 							<div className="groupColor">
@@ -83,11 +77,12 @@ export default class MySelection extends React.Component {
 							</div>
 							<img src={`${item.image}`} />
 							<p>{item.title}</p>
+							<button >Show info</button>
 							<button onClick={() => this.removeItem(item)}>remove</button>
-						</div>	
+						</div>
 					)
 				})}
-			</div>
+			</div>	
 		
 		)
 	}

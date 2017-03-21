@@ -157,6 +157,9 @@ header {
   line-height: 1;
   text-transform: uppercase; }
 
+button {
+  color: white; }
+
 .heading {
   width: 100%;
   text-align: right; }
@@ -416,7 +419,13 @@ button.saveSelection {
   color: #ffe9fd; }
 
 .savedItem {
-  width: 33%; }
+  display: -ms-flexbox;
+  display: flex;
+  margin: 20px; }
+  .savedItem img {
+    display: none; }
+  .savedItem p {
+    display: none; }
 
 footer p {
   font-size: .8rem;

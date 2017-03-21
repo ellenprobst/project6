@@ -34,6 +34,10 @@ header {
 	text-transform: uppercase;	
 }
 
+button {
+	color: white;
+}
+
 .heading {
 	width: 100%;
 	text-align: right;
@@ -346,7 +350,14 @@ button.saveSelection {
 
 
 .savedItem {
-	width: 33%;
+	display: flex;
+	margin: 20px;
+	img {
+		display: none;
+	}
+	p {
+		display: none;
+	}
 }
 
 footer p {
