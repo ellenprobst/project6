@@ -11,9 +11,9 @@ body {
 	background-color: #c7b3d6;
 	 background-image: url(../images/ink.jpg);
 	color: #ffe9fd;
-	background-size: 100%;
+	background-size: cover;
 	background-repeat: no-repeat;
-	height: 100vh;
+	min-height: 100vh;
 }
 
 .wrapper {
@@ -38,6 +38,74 @@ header {
 	width: 100%;
 	text-align: right;
 }
+.create-user {
+	align-self: flex-end;
+	ul {
+		margin: 0;
+		padding: 0;
+		li {
+			display: inline-block;
+			list-style: none;
+			margin: 0;
+		}
+	}
+	
+}
+
+.overlay {
+	position: absolute;
+	left: 0;
+	right: 0;
+	z-index: 10;
+	background-color: rgba(0,0,0, .7);
+	height: 100%;
+	bottom: 0;
+	top: 0;
+}
+
+form.show {
+	opacity: 1;
+	transition: all .5s ease;
+}
+
+form.user-form {
+	display: flex;
+	flex-direction: column;
+	background-color: white;
+	border-radius: 10px;
+	padding: 20px 40px 40px;
+	position: relative;
+	color: rgb(17, 0, 25);
+	position: absolute;
+	left: 30%;
+	right: 30%;
+	top: 20%;
+	z-index: 10;
+	
+	label {
+		padding: 10px;
+	}
+	button {
+		margin-top: 20px;
+	}
+	i {
+		text-align: right;
+		padding: 10px;
+		&:hover {
+			cursor: pointer;
+		}
+	}
+	
+}
+
+form.hide {
+	opacity: 0;
+}
+div.hide {
+	display: none;
+}
+
+
 
 nav {
 	
@@ -142,7 +210,7 @@ button {
 	justify-content: space-between;
 	flex-wrap: wrap;
 	text-transform: uppercase;
-	height: 80vh;
+	min-height: 80vh;
 	padding: 20px;
 	max-width: 100%;
     background: rgba(199, 179, 214, 0.68);
@@ -159,7 +227,7 @@ input[type="radio"] {
 	display: none;
 }
 
-label {
+.painterMenu label {
 	font-weight: bold;
 	transition: all .4s ease;
 	letter-spacing: 1.5px;
@@ -274,6 +342,11 @@ li {
 button.saveSelection {
 	display: inline-block;
 	color: #ffe9fd;
+}
+
+
+.savedItem {
+	width: 33%;
 }
 
 footer p {

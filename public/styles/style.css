@@ -134,9 +134,9 @@ body {
   background-color: #c7b3d6;
   background-image: url(../images/ink.jpg);
   color: #ffe9fd;
-  background-size: 100%;
+  background-size: cover;
   background-repeat: no-repeat;
-  height: 100vh; }
+  min-height: 100vh; }
 
 .wrapper {
   display: -ms-flexbox;
@@ -160,6 +160,62 @@ header {
 .heading {
   width: 100%;
   text-align: right; }
+
+.create-user {
+  -ms-flex-item-align: end;
+      align-self: flex-end; }
+  .create-user ul {
+    margin: 0;
+    padding: 0; }
+    .create-user ul li {
+      display: inline-block;
+      list-style: none;
+      margin: 0; }
+
+.overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.7);
+  height: 100%;
+  bottom: 0;
+  top: 0; }
+
+form.show {
+  opacity: 1;
+  transition: all .5s ease; }
+
+form.user-form {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+      flex-direction: column;
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px 40px 40px;
+  position: relative;
+  color: #110019;
+  position: absolute;
+  left: 30%;
+  right: 30%;
+  top: 20%;
+  z-index: 10; }
+  form.user-form label {
+    padding: 10px; }
+  form.user-form button {
+    margin-top: 20px; }
+  form.user-form i {
+    text-align: right;
+    padding: 10px; }
+    form.user-form i:hover {
+      cursor: pointer; }
+
+form.hide {
+  opacity: 0; }
+
+div.hide {
+  display: none; }
 
 nav {
   padding-top: 10px;
@@ -252,7 +308,7 @@ button {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   text-transform: uppercase;
-  height: 80vh;
+  min-height: 80vh;
   padding: 20px;
   max-width: 100%;
   background: rgba(199, 179, 214, 0.68);
@@ -266,14 +322,14 @@ button {
 input[type="radio"] {
   display: none; }
 
-label {
+.painterMenu label {
   font-weight: bold;
   transition: all .4s ease;
   letter-spacing: 1.5px;
   padding: 10px;
   color: #061138;
   border-radius: 5px; }
-  label:hover {
+  .painterMenu label:hover {
     color: #ffe9fd;
     background-color: rgba(6, 17, 56, 0.81);
     cursor: pointer; }
@@ -358,6 +414,9 @@ li {
 button.saveSelection {
   display: inline-block;
   color: #ffe9fd; }
+
+.savedItem {
+  width: 33%; }
 
 footer p {
   font-size: .8rem;

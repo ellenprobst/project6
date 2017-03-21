@@ -2,6 +2,7 @@ import React from 'react';
 import { ajax } from 'jquery';
 import Navigation from './navigation';
 import { Router, Route, browserHistory, Link } from 'react-router';
+import UserLogin from './userLogin.js';
 var Slider = require('react-slick');
 var Carousel = require('nuka-carousel');
 
@@ -20,7 +21,9 @@ export default class SelectedPainter extends React.Component {
 	}
 
 	handleClick(painting) {
-		const dbRef = firebase.database().ref();
+		var user = firebase.auth().currentUser;
+
+		const dbRef = firebase.database().ref(`/users/${user.uid}`);
 		
 		console.log(painting);
 		const selectedPainting = {
@@ -56,8 +59,7 @@ export default class SelectedPainter extends React.Component {
 			            format: "json",
 			            imgonly: true,
 			            type: "painting",
-			            ps: 20,
-			            q: this.state.painter
+			            ps: 20
 			           }
 				}).then((paintingData) => {
 					let artObject = paintingData.artObject
@@ -77,6 +79,7 @@ export default class SelectedPainter extends React.Component {
 	render() {
 		return (
 			<div className="wrapper">
+				<UserLogin />
 				<div className="heading">
 					<Navigation />
 				</div>

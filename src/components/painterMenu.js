@@ -2,6 +2,7 @@ import React from 'react';
 import paintersList from './data.js';
 import Navigation from './navigation';
 import SelectedPainter from './selectedPainter.js';
+import UserLogin from './userLogin.js';
 import { Router, Route, browserHistory, Link } from 'react-router';
 
 export default class PainterMenu extends React.Component {
@@ -22,11 +23,12 @@ export default class PainterMenu extends React.Component {
 		this.setState({
 			view : "colors"
 		})
-		
 	}
 	render() {
+		
 		return (
 			<div className="wrapper">
+				<UserLogin />
 				<div className="heading">
 					<Navigation />
 				</div>
@@ -37,8 +39,8 @@ export default class PainterMenu extends React.Component {
 						{paintersList.map((painter, i) => {
 							return(
 								<div key={`painter-${i}`} className="painter">
-									<input type="radio" name="painter" id={painter.name} value={painter.name}  onClick={this.handleSubmit}/>
-									<label htmlFor={painter.name}>{painter.name}</label>
+									<input type="radio" name="painter" id={painter} value={painter}  onClick={this.handleSubmit}/>
+									<label htmlFor={painter}>{painter}</label>
 								</div>	
 							)
 						})}

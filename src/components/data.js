@@ -1,47 +1,5 @@
-const paintersList = [
-	{
-		name: "Frans Hals"
-		
-	},
-	{
-		name: "Rembrandt van Rijn"
-		
-	},
-	{
-		name: "Johannes Vermeer"
-		
-	},
-	{
-		name: "Caesar Boëtius van Everdingen"
-		
-	},
-	{
-		name: "Jan Havicksz. Steen"
-		
-	},
-	{
-		name: "George Hendrik Breitner"
-		
-	},
-	{
-		name: "Jan van Scorel"
-		
-	},
-	{
-		name: "Jan Willem Pieneman"
-		
-	},
-	{
-		name: "Hendrick Avercamp"
-		
-	},
-	{
-		name: "Jan Asselijn"
-	},
-	{	
-		name: "Pieter Paul Rubens"
-	}
-]
+const paintersList = ["Frans Hals","Rembrandt Harmensz. van Rijn","Johannes Vermeer","Caesar Boëtius van Everdingen","Jan Havicksz. Steen","George Hendrik Breitner","Jan van Scorel","Jan Willem Pieneman", "Hendrick Avercamp","Jan Asselijn","Pieter Paul Rubens"]
+	
 
 
 export default paintersList;
