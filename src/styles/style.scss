@@ -9,7 +9,7 @@ body {
 	font-family: 'Raleway', sans-serif;
 	font-size: 1.2rem;
 	background-color: #c7b3d6;
-	 background-image: url(../images/ink.jpg);
+	background-image: url(../images/ink.jpg);
 	color: #ffe9fd;
 	background-size: cover;
 	background-repeat: no-repeat;
@@ -22,7 +22,12 @@ body {
 	justify-content: center;
 	align-items: center;
 	max-width: 1300px;
+	padding: 20px;
+	min-height: 100vh;
+}
 
+.wrapper.mySelection {
+	justify-content: flex-start;
 }
 
 header {
@@ -34,8 +39,12 @@ header {
 	text-transform: uppercase;	
 }
 
-button {
-	color: white;
+.logout {
+	padding: 5px 10px;
+	color: rgb(6, 17, 56);
+	&:hover {
+		cursor: pointer;
+	}
 }
 
 .heading {
@@ -105,11 +114,6 @@ form.user-form {
 form.hide {
 	opacity: 0;
 }
-div.hide {
-	display: none;
-}
-
-
 
 nav {
 	
@@ -182,7 +186,7 @@ button {
 	transition: all 1s ease;
 	a {
 		color:  #F4CCEE;
-		padding: 10px 15px;
+		padding: 10px 60px;
 	}
 	&:hover {
 		background-color: transparent;
@@ -281,11 +285,12 @@ input[type="radio"] {
 
 .groupColor {
 	display: flex;
-	margin: 10px;
 	justify-content: center;
 	border: 2px solid white;
 	border-radius: 5px;
 	align-self: center;
+	position: relative;
+    z-index: 10;
 }
 
 .colors {
@@ -349,15 +354,98 @@ button.saveSelection {
 }
 
 
-.savedItem {
+.savedItemContainer {
 	display: flex;
 	margin: 20px;
-	img {
-		display: none;
+	overflow: hidden;
+}
+
+.mustLogin {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.mustLogin__content {
+	width: 50%;
+	background: white;
+	border-radius: 20px;
+	padding: 20px 50px 70px;
+	margin: 0 auto;
+	i {
+		text-align: right;
+		color: rgb(17, 0, 25);
+		display: block;
+		padding: 10px 20px;
+		&:hover {
+			cursor: pointer;
+		}
 	}
-	p {
-		display: none;
+}
+.mustLogin .create-user {
+	
+	nav {
+		text-align: center;
+		a {
+			font-size: 1.5rem;
+			background-color: #c7b3d6;
+			margin: 0px 40px;
+			border-radius: 10px;
+		}
 	}
+
+}
+
+.mustLogin.hide {
+	display: none;
+}
+
+.savedItem__info {
+    position: relative;
+    transform: translateY(-100%);
+    opacity: 0;
+    transition: all 1s;
+    width: 50%;
+    margin: 0 auto;
+    animation: slide-out 1s forwards;
+}
+
+.savedItem__info.slide {
+	display: block;
+	opacity: 1;
+	height: auto;
+    animation: slide-in 0.5s forwards;
+    -webkit-animation: slide-in 0.5s forwards;
+}
+
+// .savedItem__info.slideOut {
+//     animation: slide-out 0.5s forwards;
+//     -webkit-animation: slide-out 0.5s forwards;
+// }
+    
+@keyframes slide-in {
+    100% { transform: translateY(0%); }
+}
+
+@-webkit-keyframes slide-in {
+    100% { -webkit-transform: translateY(0%); }
+}
+    
+@keyframes slide-out {
+    0% { transform: translateY(0%); }
+    100% { transform: translateY(-100%); display: none;    	height: 0;
+}
+}
+
+@-webkit-keyframes slide-out {
+    0% { -webkit-transform: translateY(0%); }
+    100% { -webkit-transform: translateY(-100%); }
+}
+
+
+.savedItemContainer button {
+	align-self: flex-start;
 }
 
 footer p {

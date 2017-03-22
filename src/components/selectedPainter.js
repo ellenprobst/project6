@@ -17,25 +17,33 @@ export default class SelectedPainter extends React.Component {
 		}
 
 		this.handleClick = this.handleClick.bind(this);
+		this.hide = this.hide.bind(this);
 		
 	}
 
 	handleClick(painting) {
-		var user = firebase.auth().currentUser;
-
+		if(firebase.auth().currentUser != null) {
+		const user = firebase.auth().currentUser;
 		const dbRef = firebase.database().ref(`/users/${user.uid}`);
 		
-		console.log(painting);
 		const selectedPainting = {
 			name: painting.principalMaker,
 			title: painting.title,
 			image: painting.webImage.url,
-			colors: painting.normalizedColors
+			colors: painting.normalizedColors,
+			id: painting.id
 		};
-		console.log(selectedPainting)
-		dbRef.push(selectedPainting);	
+
+		dbRef.push(selectedPainting);
+		}
+		else {
+			this.setState({mustLogin: true})
+		}	
 	}
 	
+	hide() {
+		this.setState({mustLogin: false})
+	}
 
 	componentDidMount() {
 		ajax({
@@ -112,6 +120,9 @@ export default class SelectedPainter extends React.Component {
 					</Carousel>
 				</div>
 
+				{this.state.mustLogin === true ? <div className="mustLogin overlay" id="mustLogin"><div className="mustLogin__content"><i className="fa fa-times" aria-hidden="true" onClick={()=> this.hide()}></i><UserLogin /></div></div>
+					: null
+				}
 			</div>
 		)
 	}

@@ -1,5 +1,6 @@
 import React from 'react';
 import UserLogin from './userLogin.js';
+import Navigation from './navigation';
 import { Router, Route, browserHistory, Link } from 'react-router';
 
 
@@ -8,27 +9,25 @@ export default class MySelection extends React.Component {
 	constructor() {
 		super();
 		this.state = {
-			savedItems : [
-				{
-					title: "",
-					image: "",
-					colors: []
-				}
-			]
+			savedItems : [],
+			show: ''
+
 		}
-		this.removeItem = this.removeItem.bind(this);	
+		this.removeItem = this.removeItem.bind(this);
+		this.displayInfo = this.displayInfo.bind(this);	
 	}
 
 	componentDidMount() {
 		var user = firebase.auth().currentUser;
 
 		const dbRef = firebase.database().ref(`/users/${user.uid}`);
-   		dbRef.on('value', (response) => {
-     	console.log(response.val());
-   		});
+		dbRef.on('value', (response) => {
+		     	// console.log(response.val());
+		   		});
 
    		firebase.auth().onAuthStateChanged((user) => {
 			if(user) {
+				
 				dbRef.on('value', (data) => {
 					// console.log(data.val());
 
@@ -55,35 +54,67 @@ export default class MySelection extends React.Component {
 		dbRef.remove();
 	}
 
+	displayInfo(item) {
+		console.log(item)
+		var itemSel  = document.getElementById(`${item.key}`)
+		console.log(itemSel.className, "this is the element i want")
+		itemSel.classList.toggle('slide')
+         
+	}
+
 	render() {
+		let nothingThere = '';
+
+		
+		if(this.state.savedItems.length === 0) {
+			nothingThere = (
+				<div>
+					<p>You currently have no items saved.</p>
+				</div>
+			);
+		}
+		else  {
+			nothingThere = ''
+		}
 		return (
-			<div>
+			<div className="wrapper mySelection">
 				<UserLogin />
-				
+				<div className="heading">
+					<Navigation />
+				</div>	
+				<div className="mainContent">
+				<h2>My color palettes</h2>
 				{this.state.savedItems.map((item, i) => {
 					return(
-						<div key={`savedItem-${i}`} className="savedItem">
-							<div className="groupColor">
-									{item.colors.map((color, i)=> {
-										let divStyle = {
-											backgroundColor: color
-										}
-										return (
-											<div style={divStyle} key={`color-${i}`} className="colors">
-												<p>{color}</p>
-											</div>
-										)
-									})}
+						<div key={`savedItem-${i}`} className="savedItemContainer">
+							<div className="savedItem">
+								<div className="groupColor">
+										{item.colors.map((color, i)=> {
+											let divStyle = {
+												backgroundColor: color
+											}
+											return (
+												<div style={divStyle} key={`color-${i}`} className="colors">
+													<p>{color}</p>
+												</div>
+											)
+										})}
+								</div>
+								<div className="savedItem__info" id={`${item.key}`}>
+									<img src={`${item.image}`} />
+									<p>{item.title}</p>
+									<p>{item.name}</p>
+								</div>
 							</div>
-							<img src={`${item.image}`} />
-							<p>{item.title}</p>
-							<button >Show info</button>
+							<button  onClick={() => this.displayInfo(item)}>Show info</button>
 							<button onClick={() => this.removeItem(item)}>remove</button>
 						</div>
+
 					)
 				})}
+				</div>
+				<div>{nothingThere}</div>			
 			</div>	
-		
 		)
 	}
 }

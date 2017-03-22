@@ -147,7 +147,13 @@ body {
       justify-content: center;
   -ms-flex-align: center;
       align-items: center;
-  max-width: 1300px; }
+  max-width: 1300px;
+  padding: 20px;
+  min-height: 100vh; }
+
+.wrapper.mySelection {
+  -ms-flex-pack: start;
+      justify-content: flex-start; }
 
 header {
   width: 70%;
@@ -157,8 +163,11 @@ header {
   line-height: 1;
   text-transform: uppercase; }
 
-button {
-  color: white; }
+.logout {
+  padding: 5px 10px;
+  color: #061138; }
+  .logout:hover {
+    cursor: pointer; }
 
 .heading {
   width: 100%;
@@ -216,9 +225,6 @@ form.user-form {
 
 form.hide {
   opacity: 0; }
-
-div.hide {
-  display: none; }
 
 nav {
   padding-top: 10px;
@@ -281,7 +287,7 @@ button {
   transition: all 1s ease; }
   button a {
     color: #F4CCEE;
-    padding: 10px 15px; }
+    padding: 10px 60px; }
   button:hover {
     background-color: transparent;
     border: 2px solid #061138; }
@@ -366,13 +372,14 @@ input[type="radio"] {
 .groupColor {
   display: -ms-flexbox;
   display: flex;
-  margin: 10px;
   -ms-flex-pack: center;
       justify-content: center;
   border: 2px solid white;
   border-radius: 5px;
   -ms-flex-item-align: center;
-      align-self: center; }
+      align-self: center;
+  position: relative;
+  z-index: 10; }
 
 .colors {
   display: inline-block;
@@ -418,14 +425,78 @@ button.saveSelection {
   display: inline-block;
   color: #ffe9fd; }
 
-.savedItem {
+.savedItemContainer {
   display: -ms-flexbox;
   display: flex;
-  margin: 20px; }
-  .savedItem img {
-    display: none; }
-  .savedItem p {
-    display: none; }
+  margin: 20px;
+  overflow: hidden; }
+
+.mustLogin {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+      justify-content: center;
+  -ms-flex-align: center;
+      align-items: center;
+  -ms-flex-direction: column;
+      flex-direction: column; }
+
+.mustLogin__content {
+  width: 50%;
+  background: white;
+  border-radius: 20px;
+  padding: 20px 50px 70px;
+  margin: 0 auto; }
+  .mustLogin__content i {
+    text-align: right;
+    color: #110019;
+    display: block;
+    padding: 10px 20px; }
+    .mustLogin__content i:hover {
+      cursor: pointer; }
+
+.mustLogin .create-user nav {
+  text-align: center; }
+  .mustLogin .create-user nav a {
+    font-size: 1.5rem;
+    background-color: #c7b3d6;
+    margin: 0px 40px;
+    border-radius: 10px; }
+
+.mustLogin.hide {
+  display: none; }
+
+.savedItem__info {
+  position: relative;
+  transform: translateY(-100%);
+  opacity: 0;
+  transition: all 1s;
+  width: 50%;
+  margin: 0 auto;
+  animation: slide-out 1s forwards; }
+
+.savedItem__info.slide {
+  display: block;
+  opacity: 1;
+  height: auto;
+  animation: slide-in 0.5s forwards;
+  -webkit-animation: slide-in 0.5s forwards; }
+
+@keyframes slide-in {
+  100% {
+    transform: translateY(0%); } }
+
+@keyframes slide-out {
+  0% {
+    transform: translateY(0%); }
+  100% {
+    transform: translateY(-100%);
+    display: none;
+    height: 0; } }
+
+.savedItemContainer button {
+  -ms-flex-item-align: start;
+      align-self: flex-start; }
 
 footer p {
   font-size: .8rem;

@@ -62,7 +62,8 @@ export default class UserLogin extends React.Component {
 		this.setState({ class: 'hide' });
 	}
 
-	logOut() {
+	logOut(e) {
+		e.preventDefault();
 		firebase.auth().signOut();
 		this.setState({ userLog: 'loggedOut'})
 	}
@@ -104,12 +105,14 @@ export default class UserLogin extends React.Component {
 		}
 
 		let userAccount = '';
-		if(this.state.userLog === 'loggedIn') {
+		if(firebase.auth().currentUser != null) {
 			userAccount = (
-				<div><button onClick={this.logOut}>Log out</button></div>
+				<div>
+					<a className="logout" onClick={this.logOut}><i className="fa fa-sign-out" aria-hidden="true"></i>Log out</a>
+				</div>
 			);
 		}
-		else if (this.state.userLog === 'loggedOut') {
+		else if (firebase.auth().currentUser === null) {
 			userAccount = (
 				<nav>
 					<ul>
@@ -123,8 +126,7 @@ export default class UserLogin extends React.Component {
 
 			<div className="create-user">
 				{userAccount}
-				{loginForm}
-				
+				{loginForm}	
 			</div>
 		)
 	}
