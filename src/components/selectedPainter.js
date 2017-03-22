@@ -112,7 +112,7 @@ export default class SelectedPainter extends React.Component {
 										)
 									})}
 								</div>
-								<button className="saveSelection" onClick={() => this.handleClick(painting)}>Save my selection</button>
+								<button className="saveSelection" onClick={() => this.handleClick(painting)}>Save</button>
 							</div>
 						)
 					})

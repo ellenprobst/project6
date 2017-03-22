@@ -32,6 +32,7 @@ class App extends React.Component {
 				<h1>Colors <span className="lower">from</span><span> the low countries</span></h1>
 				<button><Link to="/painters">Start</Link></button>
 				</header>
+				<footer><p>Made by Ellen Probst // illustration by FreePik // data by The Rijksmuseum</p></footer>
 			</div>  
 		)
 		

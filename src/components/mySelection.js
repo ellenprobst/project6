@@ -106,8 +106,11 @@ export default class MySelection extends React.Component {
 									<p>{item.name}</p>
 								</div>
 							</div>
-							<button  onClick={() => this.displayInfo(item)}>Show info</button>
-							<button onClick={() => this.removeItem(item)}>remove</button>
+							<div className="buttons">
+								<button onClick={() => this.removeItem(item)}><i className="fa fa-trash-o" aria-hidden="true"></i></button>
+								<button  onClick={() => this.displayInfo(item)}><i className="fa fa-caret-down" aria-hidden="true"></i>
+								</button>
+							</div>
 						</div>
 
 					)

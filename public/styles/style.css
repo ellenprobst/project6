@@ -132,11 +132,7 @@ body {
   font-family: 'Raleway', sans-serif;
   font-size: 1.2rem;
   background-color: #c7b3d6;
-  background-image: url(../images/ink.jpg);
-  color: #ffe9fd;
-  background-size: cover;
-  background-repeat: no-repeat;
-  min-height: 100vh; }
+  color: #ffe9fd; }
 
 .wrapper {
   display: -ms-flexbox;
@@ -148,12 +144,20 @@ body {
   -ms-flex-align: center;
       align-items: center;
   max-width: 1300px;
-  padding: 20px;
-  min-height: 100vh; }
+  padding: 0 20px;
+  min-height: 100vh;
+  background-image: url(../images/ink.jpg);
+  background-size: cover;
+  background-repeat: no-repeat; }
 
 .wrapper.mySelection {
   -ms-flex-pack: start;
       justify-content: flex-start; }
+  .wrapper.mySelection button {
+    color: #ffe9fd;
+    background-color: rgba(0, 3, 19, 0.81);
+    margin: 10px;
+    width: 100px; }
 
 header {
   width: 70%;
@@ -162,6 +166,19 @@ header {
   text-align: center;
   line-height: 1;
   text-transform: uppercase; }
+
+.create-user a {
+  color: #061138;
+  font-family: sans-serif;
+  text-transform: uppercase;
+  font-size: .8rem;
+  font-weight: bolder;
+  padding: 5px 10px;
+  transition: all 1s ease; }
+  .create-user a:hover {
+    background-color: #061138;
+    color: #ffe9fd;
+    border-radius: 5px; }
 
 .logout {
   padding: 5px 10px;
@@ -207,7 +224,7 @@ form.user-form {
   border-radius: 10px;
   padding: 20px 40px 40px;
   position: relative;
-  color: #110019;
+  color: #061138;
   position: absolute;
   left: 30%;
   right: 30%;
@@ -226,24 +243,23 @@ form.user-form {
 form.hide {
   opacity: 0; }
 
-nav {
-  padding-top: 10px;
+.heading nav {
   text-transform: uppercase;
   -ms-flex-item-align: end;
       align-self: flex-end; }
-  nav a {
+  .heading nav a {
     padding: 10px 20px;
-    color: #110019;
+    color: #061138;
     position: relative;
     font-size: .8rem;
     font-weight: bold; }
-    nav a:after {
+    .heading nav a:after {
       content: "";
       left: 20px;
       display: block;
       position: absolute;
       width: 40px;
-      background-color: #110019;
+      background-color: #061138;
       height: 2px; }
 
 h1 {
@@ -260,13 +276,13 @@ h1 {
 
 h2 {
   display: inline-block;
-  margin: 0 0 20px;
-  font-size: 3rem;
+  margin: 20px 0 10px;
+  font-size: 2.8rem;
   padding: 20px;
   text-align: center;
   line-height: 1;
   color: #ffe9fd;
-  background-color: rgba(17, 0, 25, 0.81);
+  background-color: rgba(0, 3, 19, 0.81);
   border-radius: 20px; }
 
 a {
@@ -297,7 +313,7 @@ button {
 .mainContent {
   width: 80%;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 20px 20px;
   text-align: center; }
 
 .wrapper__menu {
@@ -350,7 +366,7 @@ input[type="radio"] {
 .allColors {
   width: 80%;
   margin: 0 auto;
-  background-color: #110019;
+  background-color: #000313;
   border-radius: 20px;
   padding: 30px 20px; }
 
@@ -383,7 +399,9 @@ input[type="radio"] {
 
 .colors {
   display: inline-block;
-  padding: 20px 15px; }
+  padding: 20px 15px;
+  -ms-flex-positive: 1;
+      flex-grow: 1; }
   .colors p {
     color: #ffe9fd;
     font-size: 1rem;
@@ -423,12 +441,23 @@ li {
 
 button.saveSelection {
   display: inline-block;
-  color: #ffe9fd; }
+  background-color: #ffe9fd;
+  border: 1px solid #000311;
+  color: #000311;
+  padding: 5px;
+  margin: 10px auto;
+  width: 100px;
+  font-size: 1rem;
+  transition: all .8s ease; }
+  button.saveSelection:hover {
+    color: #ffe9fd;
+    background-color: transparent;
+    border: 1px solid #ffe9fd; }
 
 .savedItemContainer {
   display: -ms-flexbox;
   display: flex;
-  margin: 20px;
+  margin: 40px 20px;
   overflow: hidden; }
 
 .mustLogin {
@@ -449,7 +478,7 @@ button.saveSelection {
   margin: 0 auto; }
   .mustLogin__content i {
     text-align: right;
-    color: #110019;
+    color: #061138;
     display: block;
     padding: 10px 20px; }
     .mustLogin__content i:hover {
@@ -463,7 +492,7 @@ button.saveSelection {
     margin: 0px 40px;
     border-radius: 10px; }
 
-.mustLogin.hide {
+.mustLogin.hide, .overlay.hide {
   display: none; }
 
 .savedItem__info {
@@ -477,6 +506,7 @@ button.saveSelection {
 
 .savedItem__info.slide {
   display: block;
+  margin-top: 20px;
   opacity: 1;
   height: auto;
   animation: slide-in 0.5s forwards;
@@ -498,6 +528,8 @@ button.saveSelection {
   -ms-flex-item-align: start;
       align-self: flex-start; }
 
-footer p {
-  font-size: .8rem;
-  text-align: center; }
+footer {
+  margin-top: 50px; }
+  footer p {
+    font-size: .8rem;
+    text-align: center; }
