@@ -35,8 +35,16 @@
     width: 50%;
     margin: 0 auto;
     animation: slide-out 1s forwards;
+    img {
+    	width: 50%;
+    	margin: 0 auto;
+    }
     p {
+    	font-size: 1rem;
     	color: rgb(6, 17, 56);
+    }
+    p:last-child {
+    	font-weight: bold;
     }
 }
 

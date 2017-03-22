@@ -281,7 +281,7 @@ header {
   text-transform: uppercase; }
   @media all and (max-width: 768px) {
     header {
-      background-color: rgba(255, 233, 253, 0.8);
+      background-color: rgba(199, 179, 214, 0.8);
       border-radius: 5px;
       padding: 10px;
       width: 100%; } }
@@ -291,8 +291,8 @@ header {
   text-align: right; }
   @media all and (max-width: 480px) {
     .heading {
-      text-align: left;
-      padding: Opx; } }
+      text-align: center;
+      padding: 0px; } }
 
 .innerWrapper {
   display: -ms-flexbox;
@@ -345,8 +345,14 @@ header {
   width: 50%;
   margin: 0 auto;
   animation: slide-out 1s forwards; }
+  .savedItem__info img {
+    width: 50%;
+    margin: 0 auto; }
   .savedItem__info p {
+    font-size: 1rem;
     color: #061138; }
+  .savedItem__info p:last-child {
+    font-weight: bold; }
 
 .savedItem__info.slide {
   display: block;
@@ -456,6 +462,7 @@ button.saveSelection {
   width: 80%;
   margin: 0 auto;
   background-color: #000313;
+  box-shadow: 0 0 10px #000313;
   border-radius: 20px;
   padding: 30px 20px; }
   @media all and (max-width: 480px) {

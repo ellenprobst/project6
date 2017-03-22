@@ -6,7 +6,7 @@ header {
 	line-height: 1;
 	text-transform: uppercase;
 	@include bp(tablet) {
-		background-color:rgba(199, 179, 214);
+		background-color:rgba(199, 179, 214, .8);
 		border-radius: 5px;
 		padding: 10px;
 		width: 100%;

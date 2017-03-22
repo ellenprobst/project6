@@ -10,6 +10,7 @@
 	width: 80%;
 	margin: 0 auto;
 	background-color: #000313;
+	box-shadow: 0 0 10px #000313;
 	border-radius: 20px;
 	padding: 30px 20px;
 	@include bp(mobile) {
