@@ -1,0 +1,116 @@
+
+
+
+.selectedPainter {
+  display: flex;
+  
+}
+
+.allColors {
+	width: 80%;
+	margin: 0 auto;
+	background-color: #000313;
+	border-radius: 20px;
+	padding: 30px 20px;
+	@include bp(mobile) {
+		width: 100%;
+		padding: 15px;
+	}
+	
+}
+
+.paintingDetails {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	img {
+		max-width: 100%;
+		height: 300px;
+		display: block;
+		margin: 0 auto;
+		@include bp(mobile) {
+			margin-bottom: 20px;
+		}
+		    
+	}
+	p {
+		text-align: center;
+	}
+}
+
+.groupColor {
+	display: flex;
+	justify-content: center;
+	border: 2px solid white;
+	border-radius: 5px;
+	align-self: center;
+	position: relative;
+    z-index: 10;
+    @include bp(mobile) {
+		flex-wrap: wrap;
+	}
+}
+
+.colors {
+	display: inline-block;
+	padding: 20px 15px;
+	flex-grow: 1;
+	p {
+		color: #ffe9fd;
+		font-size: 1rem;
+		text-align: center;
+	}
+	 @include bp(mobile) {
+		padding: 5px;
+	}
+}
+
+
+// carousel
+
+
+
+li {
+	margin: 30px;
+	button {
+		display: none;
+	}
+}
+
+.slider-decorator-2  {
+	display: none;
+}
+
+.slider-decorator-0 button, .slider-decorator-1 button{
+	visibility: hidden;
+	opacity: 1;
+	position: relative;
+
+        &::after {
+		  font-family: FontAwesome;
+		  position: absolute;
+		  padding: 5px;
+		  visibility: visible !important;
+		  width: 2rem;
+		  height: 2rem;
+		  font-size: 2rem;
+		  border-radius: 100px;
+		  background: rgba(0, 0, 0, 0.5);
+		  color: white;
+		  bottom: 0;
+          
+        }
+}
+
+.slider-decorator-0 button {
+	 &::after {
+	 	content: '\f104';
+	 	display: inherit;
+	 }
+}
+
+.slider-decorator-1 button {
+	 &::after {
+	 	content: '\f105';
+	 }
+}

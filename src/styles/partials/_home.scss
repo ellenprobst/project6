@@ -1,0 +1,39 @@
+header {
+ 	width: 70%;
+	color: rgb(6, 17, 56);
+	padding: 60px;
+	text-align: center;
+	line-height: 1;
+	text-transform: uppercase;
+	@include bp(tablet) {
+		background-color:rgba(199, 179, 214);
+		border-radius: 5px;
+		padding: 10px;
+		width: 100%;
+	}
+	
+}
+
+.heading {
+	width: 100%;
+	text-align: right;
+	@include bp(mobile) {
+		text-align: center;
+		padding: 0px;
+	}
+	
+}
+
+.innerWrapper {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+}
+
+.wrapper.home {
+	@include bp(mobile) {
+		justify-content: space-between;
+	}
+}

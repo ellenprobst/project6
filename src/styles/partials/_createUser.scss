@@ -1,0 +1,172 @@
+.create-user a {
+	color: rgb(6, 17, 56);
+	font-family: sans-serif;
+	text-transform: uppercase;
+	font-size: .8rem;
+	font-weight: bolder;
+	padding: 5px 10px;
+	margin-left: 5px;
+	transition: all 1s ease;
+	&:hover {
+		background-color: rgb(6, 17, 56);
+		color: #ffe9fd;
+		border-radius: 5px;
+	}
+}
+
+.logout {
+	padding: 5px 10px;
+	color: rgb(6, 17, 56);
+	&:hover {
+		cursor: pointer;
+	}
+}
+
+
+.create-user {
+	align-self: flex-end;
+	ul {
+		margin: 0;
+		padding: 0;
+		li {
+			display: inline-block;
+			list-style: none;
+			margin: 10px;
+		}
+	}
+	
+}
+
+.overlay {
+	position: absolute;
+	left: 0;
+	right: 0;
+	z-index: 10;
+	background-color: rgba(0,0,0, .7);
+	height: 100%;
+	bottom: 0;
+	top: 0;
+	display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+form.show {
+	opacity: 1;
+	transition: all .5s ease;
+}
+
+form.user-form {
+	display: flex;
+	flex-direction: column;
+	background-color: white;
+	font-family: sans-serif;
+	border-radius: 10px;
+	padding: 20px 40px 40px;
+	position: relative;
+	color: rgb(6, 17, 56);
+	position: absolute;
+	margin: 0 5px;
+	
+	top: 20%;
+	z-index: 10;
+	@include bp(mobile) {
+		padding: 10px;
+	}
+	label {
+		padding: 10px;
+		font-weight: bold;
+	}
+	button {
+		margin: 10px auto;
+    	width: 50%;
+		background-color: rgb(6, 17, 56);
+		color: #ffe9fd;
+		@include bp(mobile) {
+		width: 100%;
+		}
+
+	}
+	i {
+		text-align: right;
+		padding: 10px;
+		&:hover {
+			cursor: pointer;
+		}
+	}
+	
+}
+
+form.hide {
+	opacity: 0;
+}
+
+
+// -----------
+
+
+.mustLogin {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.mustLogin.hide {
+	display: none;
+}
+
+.mustLogin__content {
+	width: 50%;
+	background: #c7b3d6;
+	border-radius: 20px;
+	padding: 50px;
+	margin: 0 auto;
+	@include bp(tablet) {
+		width: 75%;
+	}
+	@include bp(mobile) {
+		width: 100%;
+		padding: 5px;
+	}
+	i {
+		text-align: right;
+		color: rgb(6, 17, 56);
+		display: block;
+		padding: 10px 20px;
+
+		&:hover {
+			cursor: pointer;
+		}
+	}
+	p {
+		text-align: center;
+		color: rgb(6, 17, 56);
+		margin-bottom: 40px;
+	}
+}
+.mustLogin .create-user {
+	
+	nav {
+		text-align: center;
+		a {
+			font-size: 1.5rem;
+			margin: 0px 20px;
+			border-radius: 10px;
+			border: 2px solid rgb(6, 17, 56);
+			color: rgb(6, 17, 56);
+			border-radius: 10px;
+			&:hover {
+				background-color: rgb(6, 17, 56);
+				color: #c7b3d6;
+				border: 2px solid rgb(6, 17, 56); 
+			
+			}
+		}
+	}
+
+}
+
+.mustLogin.hide, .overlay.hide {
+	display: none;
+}

@@ -60,6 +60,8 @@ export default class UserLogin extends React.Component {
 
 	hideForm() {
 		this.setState({ class: 'hide' });
+		const hideIt = document.getElementById('mustLogin');
+		hideIt.classList.add('hide');
 	}
 
 	logOut(e) {

@@ -1,0 +1,35 @@
+.heading nav {
+	
+	text-transform: uppercase;
+	a {
+		padding: 10px 20px;
+		color: rgb(6, 17, 56);
+		position: relative;
+		font-size: .8rem;
+		font-weight: bold;
+		transition: color .8s ease;
+		&:after {
+			content: "";
+			left: 20px;
+			display: block;
+			position: absolute;
+			width: 40px;
+			background-color: rgb(6, 17, 56);
+			height: 2px; 
+			@include bp(mobile) {
+				display: none;
+			}
+		}
+		@include bp(tablet) {
+			color: #ffe9fd;
+			font-weight: normal;
+		}
+		@include bp(mobile) {
+		padding: 10px 5px;
+		}
+		&:hover {
+				color: #ffe9fd;
+			}
+	}
+	align-self: flex-end;
+}

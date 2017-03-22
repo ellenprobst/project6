@@ -1,0 +1,74 @@
+
+.wrapper.mySelection {
+	justify-content: flex-start;
+	background-image: url(../images/ink2.jpg);
+	background-size: 100%;
+	background-repeat: no-repeat;
+	button {
+		color: #ffe9fd;
+    	background-color: rgba(0, 3, 19, 0.81);
+    	
+	}
+	.mainContent {
+		padding: 0;
+		@include bp(mobile) {
+			padding: 0;
+		}
+	}
+}
+
+.savedItemContainer {
+	display: flex;
+	margin: 40px 20px;
+	overflow: hidden;
+	align-items: center;
+	@include bp(mobile) {
+			flex-direction: column;
+		}
+}
+
+.savedItem__info {
+    position: relative;
+    transform: translateY(-100%);
+    opacity: 0;
+    transition: all 1s;
+    width: 50%;
+    margin: 0 auto;
+    animation: slide-out 1s forwards;
+    p {
+    	color: rgb(6, 17, 56);
+    }
+}
+
+.savedItem__info.slide {
+	display: block;
+	margin-top: 20px;
+	opacity: 1;
+	height: auto;
+    animation: slide-in 0.5s forwards;
+    -webkit-animation: slide-in 0.5s forwards;
+}
+
+
+    
+@keyframes slide-in {
+    100% { transform: translateY(0%); }
+}
+
+@-webkit-keyframes slide-in {
+    100% { -webkit-transform: translateY(0%); }
+}
+    
+@keyframes slide-out {
+    0% { transform: translateY(0%); }
+    100% { transform: translateY(-100%); display: none;    	height: 0;
+}
+}
+
+@-webkit-keyframes slide-out {
+    0% { -webkit-transform: translateY(0%); }
+    100% { -webkit-transform: translateY(-100%); }
+}
+
+
+

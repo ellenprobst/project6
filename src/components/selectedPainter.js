@@ -120,7 +120,7 @@ export default class SelectedPainter extends React.Component {
 					</Carousel>
 				</div>
 
-				{this.state.mustLogin === true ? <div className="mustLogin overlay" id="mustLogin"><div className="mustLogin__content"><i className="fa fa-times" aria-hidden="true" onClick={()=> this.hide()}></i><UserLogin /></div></div>
+				{this.state.mustLogin === true ? <div className="mustLogin overlay" id="mustLogin"><div className="mustLogin__content"><i className="fa fa-times" aria-hidden="true" onClick={()=> this.hide()}></i><p>Please login or sign up to continue</p><UserLogin /></div></div>
 					: null
 				}
 			</div>

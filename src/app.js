@@ -26,13 +26,15 @@ class App extends React.Component {
 	render() {
 
 		return (
-			<div className="wrapper">
-				<UserLogin />
-				<header>
-				<h1>Colors <span className="lower">from</span><span> the low countries</span></h1>
-				<button><Link to="/painters">Start</Link></button>
-				</header>
-				<footer><p>Made by Ellen Probst // illustration by FreePik // data by The Rijksmuseum</p></footer>
+			<div className="wrapper home">
+				<div className="innerWrapper">
+					<UserLogin />
+					<header>
+					<h1>Colors <span className="lower">from</span><span> the low countries</span></h1>
+					<button><Link to="/painters">Start</Link></button>
+					</header>
+				</div>
+				<footer><p>Made by <a href="https://twitter.com/EllenProbst_">Ellen Probst</a> || illustration by <a href="https://freepik.com">FreePik</a> || data by <a href="https://www.rijksmuseum.nl/">The Rijksmuseum</a></p></footer>
 			</div>  
 		)
 		

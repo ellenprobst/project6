@@ -1,0 +1,68 @@
+.mainContent {
+	width: 90%;
+	margin: 0 auto;
+	padding: 0 20px 20px;
+	text-align: center;
+	@include bp(mobile) {
+		padding: 0;
+	}
+}
+
+.painterMenu {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	text-transform: uppercase;
+	height: 90vh;
+	padding: 20px;
+	max-width: 100%;
+    background: rgba(199, 179, 214, 0.68);
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgb(0,0,0);
+    @include bp(desktop) {
+		height: auto;
+		padding: 0;
+	}
+   
+}
+
+.painter {
+	margin: 15px;
+	width: 50%;
+	@include bp(tablet) {
+		width: 100%;
+	}
+	@include bp(mobile) {
+		width: 100%;
+		margin: 15px 5px;
+	}
+}
+
+
+// form to select painter
+
+input[type="radio"] {
+	display: none;
+}
+
+.painterMenu label {
+	font-weight: bold;
+	transition: all .4s ease;
+	letter-spacing: 1.5px;
+	padding: 10px;
+	color: rgb(6, 17, 56);
+	border-radius: 5px;
+	@include bp(mobile) {
+		line-height: 1.5;
+		font-size: 1rem;
+	}
+	&:hover{
+		color: #ffe9fd;
+		background-color:rgba(6, 17, 56, 0.81);
+		cursor: pointer;
+		@include bp(mobile) {
+		background-color: transparent;
+		}
+	} 
+}

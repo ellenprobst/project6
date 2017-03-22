@@ -5,8 +5,8 @@ export default function Navigation() {
 	return (
 		<nav>
 			<Link to='/'>Home</Link>
-			<Link to='/painters'>List of Painters</Link>
-			<Link to='/mySelection'>My Selection</Link>
+			<Link to='/painters'>Painters</Link>
+			<Link to='/mySelection'>My Colors</Link>
 		</nav>
 	)
 }
