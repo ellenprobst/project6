@@ -39,6 +39,12 @@ button.saveSelection {
 	}
 }
 
+button.saved {
+	background-color: rgb(0, 3, 17);
+	color: #ffe9fd;
+	border: 1px solid #ffe9fd;
+}
+
 .buttons {
 	position: relative;
     z-index: 10;

@@ -57,7 +57,6 @@ export default class MySelection extends React.Component {
 	displayInfo(item) {
 		console.log(item)
 		var itemSel  = document.getElementById(`${item.key}`)
-		console.log(itemSel.className, "this is the element i want")
 		itemSel.classList.toggle('slide')
          
 	}

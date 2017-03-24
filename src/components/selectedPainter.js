@@ -13,7 +13,9 @@ export default class SelectedPainter extends React.Component {
 		super();
 		this.state= {
 			paintings: [],
-			view : ""
+			view : "",
+			loading: true,
+			active: false
 		}
 
 		this.handleClick = this.handleClick.bind(this);
@@ -35,10 +37,21 @@ export default class SelectedPainter extends React.Component {
 		};
 
 		dbRef.push(selectedPainting);
+
+
+		const buttonSave = document.getElementById(`${painting.id}`);
+		console.log(buttonSave)
+		buttonSave.classList.add("saved");
+		buttonSave.innerHTML = "Saved!";
+
+
+
 		}
 		else {
 			this.setState({mustLogin: true})
-		}	
+		}
+
+
 	}
 	
 	hide() {
@@ -77,13 +90,15 @@ export default class SelectedPainter extends React.Component {
 						selectedPaintings.push(artObject)
 
 						this.setState({
-							paintings: selectedPaintings
+							paintings: selectedPaintings,
+							loading: false
 						})
 					}
 				})
 			}) 	
 		})
 	}
+
 	render() {
 		return (
 			<div className="wrapper">
@@ -93,6 +108,9 @@ export default class SelectedPainter extends React.Component {
 				</div>
 				<h2>{this.props.params.painter_name}</h2>
 				<div className="allColors">
+				{this.state.loading === true ?<div className="spinner"></div>
+					: 
+				
 					<Carousel>
 					{this.state.paintings.map((painting, i) => {
 					// console.log(painting)
@@ -112,12 +130,12 @@ export default class SelectedPainter extends React.Component {
 										)
 									})}
 								</div>
-								<button className="saveSelection" onClick={() => this.handleClick(painting)}>Save</button>
+								<button id={painting.id} className="saveSelection" onClick={() => this.handleClick(painting)}>Save</button>
 							</div>
 						)
 					})
 					}
-					</Carousel>
+					</Carousel>}
 				</div>
 
 				{this.state.mustLogin === true ? <div className="mustLogin overlay" id="mustLogin"><div className="mustLogin__content"><i className="fa fa-times" aria-hidden="true" onClick={()=> this.hide()}></i><p>Please login or sign up to continue</p><UserLogin /></div></div>

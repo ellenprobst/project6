@@ -14,6 +14,18 @@ header {
 	
 }
 
+.home__info {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    i {
+    	padding: 20px 20px 20px 0;
+    	&:hover {
+    		cursor: pointer;
+    	}
+    }
+}
+
 .heading {
 	width: 100%;
 	text-align: right;
@@ -30,10 +42,55 @@ header {
 	justify-content: center;
 	align-items: center;
 	width: 100%;
+	p {
+		color: #b347a1;
+		text-transform: none;
+		font-size: 1rem;
+	}
 }
 
 .wrapper.home {
+	padding: 0 20px;
 	@include bp(mobile) {
 		justify-content: space-between;
 	}
+}
+
+.home__infoBox {
+	position: absolute;
+	left: -100%;
+	top: 40px;
+	background-color: rgba(255,255,255, .5);
+	width: 250px;
+	padding: 10px;
+	border-radius: 10px;
+	transition: left 1s ease-in-out;
+	
+	p {
+		font-size: .8rem;
+		color: rgb(6, 17, 56);
+
+		a {
+			color: #b347a1;
+
+		}
+	}
+	p:last-child {
+		text-align: center;
+	}
+	p:first-child {
+		text-align: right;
+		margin-top: 0;
+	}
+	i {
+		color: rgb(6, 17, 56);
+		font-size: 1rem;
+		padding: 5px;
+	}
+
+}
+
+.home__infoBox.showBox {
+	left: 40px;
+	transition: left 1s ease-in-out;
 }
